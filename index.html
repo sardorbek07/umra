@@ -121,19 +121,24 @@ phoneEl.addEventListener('click',()=>{if(phoneEl.selectionStart<PREFIX.length)se
 phoneEl.addEventListener('keydown',e=>{if(phoneEl.selectionStart<=PREFIX.length&&(e.key==='Backspace'||e.key==='Delete'))e.preventDefault()});
 phoneEl.addEventListener('input',()=>{ensurePrefix();const d=onlyDigits(phoneEl.value.slice(PREFIX.length)).slice(0,9);phoneEl.value=PREFIX+formatUz(d)});
 
-document.getElementById('umra-form').addEventListener('submit',e=>{
+const WEBHOOK='https://script.google.com/macros/s/AKfycbz4pTcxyjYI8d0Y6hSfO74TG9yi6Zozq4m6-o3_uGICyA4TU5YnzfaVqbZFiu1s9wNhkw/exec';
+
+document.getElementById('umra-form').addEventListener('submit',async e=>{
+  e.preventDefault();
   let ok=true;
   const nameTrim=nameEl.value.trim();
-  if(!nameTrim||!/^\p{L}[\p{L}\s]+$/u.test(nameTrim)){ok=false;errName.style.display='block';nameEl.focus()}
-  else{errName.style.display='none'}
+  if(!nameTrim||!/^\p{L}[\p{L}\s]+$/u.test(nameTrim)){ok=false;errName.style.display='block';nameEl.focus()} else{errName.style.display='none'}
   const d=onlyDigits(phoneEl.value.slice(PREFIX.length));
-  if(d.length!==9){ok=false;err.style.display='block';if(document.activeElement!==nameEl){phoneEl.focus();setCaretEnd()}}
-  else{err.style.display='none'}
-  if(!ok){e.preventDefault();return}
-  e.preventDefault();
+  if(d.length!==9){ok=false;err.style.display='block';if(document.activeElement!==nameEl){phoneEl.focus();setCaretEnd()}} else{err.style.display='none'}
+  if(!ok)return;
+
+  try{
+    await fetch(WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:nameTrim,phone:phoneEl.value,created:new Date().toISOString()})});
+  }catch(e){}
+
   popup.classList.remove('active');
   mini.classList.add('active');
-  setTimeout(()=>{window.location.href='/'},1100);
+  setTimeout(()=>{mini.classList.remove('active');},1600);
 });
 </script>
 </body>
