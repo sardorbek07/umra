@@ -121,7 +121,7 @@ phoneEl.addEventListener('click',()=>{if(phoneEl.selectionStart<PREFIX.length)se
 phoneEl.addEventListener('keydown',e=>{if(phoneEl.selectionStart<=PREFIX.length&&(e.key==='Backspace'||e.key==='Delete'))e.preventDefault()});
 phoneEl.addEventListener('input',()=>{ensurePrefix();const d=onlyDigits(phoneEl.value.slice(PREFIX.length)).slice(0,9);phoneEl.value=PREFIX+formatUz(d)});
 
-const WEBHOOK='https://script.google.com/macros/s/AKfycbz4pTcxyjYI8d0Y6hSfO74TG9yi6Zozq4m6-o3_uGICyA4TU5YnzfaVqbZFiu1s9wNhkw/exec';
+const WEBHOOK='https://script.google.com/macros/s/AKfycbwtZISZQLGOYWI5cN8CfzV8NA-8IufKSgYMGM8GXfSOftpdHlnWEW4Z6h9bZ675wH3qRA/exec';
 
 document.getElementById('umra-form').addEventListener('submit',async e=>{
   e.preventDefault();
@@ -143,3 +143,4 @@ document.getElementById('umra-form').addEventListener('submit',async e=>{
 </script>
 </body>
 </html>
+
