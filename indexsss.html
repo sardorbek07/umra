@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Umra SuperMarketi — Safar Travel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#0a6b67;--text:#0b0f10;--gold1:#ffde66;--gold2:#f3c02b;--gold3:#b68712}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:#f3f5f3}
+.container{max-width:720px;margin:0 auto;padding:0 18px}
+.header{padding:18px 0;display:flex;justify-content:center}
+.header img{height:34px}
+.title{font-size:clamp(36px,6vw,56px);line-height:1.05;text-align:center;color:#0e5853;font-weight:800;margin:6px 0 8px}
+.subtitle{font-size:clamp(18px,2.4vw,24px);line-height:1.35;text-align:center;color:#0a6b67;font-weight:700;margin:0 0 20px}
+.media{position:relative;border-radius:26px;overflow:visible;background:#fff;min-height:520px;padding-bottom:120px}
+.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center bottom;filter:saturate(1.05);z-index:0}
+.people{position:absolute;right:0;left:0;bottom:-60px;width:75%;max-width:480px;margin:0 auto;z-index:1;display:block}
+.panel{position:relative;z-index:2;background:#fff;border-radius:26px;padding:26px 28px;box-shadow:0 20px 60px rgba(0,0,0,.12);border:1px solid rgba(0,0,0,.06);width:100%;margin:-80px auto 0;text-align:center}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 26px;border-radius:50px;background:linear-gradient(180deg,var(--gold1),var(--gold2));border:0;box-shadow:0 8px 0 var(--gold3),0 18px 28px rgba(0,0,0,.18);font-weight:800;font-size:22px;letter-spacing:.2px;color:#222;text-decoration:none}
+.btn:active{transform:translateY(2px);box-shadow:0 6px 0 var(--gold3),0 10px 20px rgba(0,0,0,.16)}
+.icon{width:26px;height:26px;background:#000;-webkit-mask:url('https://static.tildacdn.one/tild3864-6131-4937-b433-333735626261/Group_9932.webp') center/contain no-repeat;mask:url('https://static.tildacdn.one/tild3864-6131-4937-b433-333735626261/Group_9932.webp') center/contain no-repeat}
+.helper{font-size:15px;color:#2f3338;margin-top:14px}
+.footer{background:#2b2f33;color:#e9ecef;padding:26px 0 36px;margin-top:28px;text-align:center}
+.footer .lic{opacity:.92;margin-top:8px}
+@media(max-width:480px){
+  .media{min-height:420px;padding-bottom:150px}
+  .people{width:78%;bottom:-58px}
+  .panel{margin:-6px auto 0;padding:22px}
+  .btn{font-size:19px}
+}
+</style>
+
+<style>
+.popup{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:999}
+.popup.active{display:flex}
+.popup-box{background:#fff;border-radius:20px;padding:30px;max-width:400px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.2);position:relative}
+.close{position:absolute;top:10px;right:16px;font-size:22px;cursor:pointer;color:#555}
+.form{display:grid;gap:14px;margin-top:8px}
+.label{font:600 14px/1.2 Inter,Arial,sans-serif;text-align:left}
+.input{width:100%;height:50px;border-radius:14px;border:1px solid #e5e7eb;padding:0 16px;font:600 16px Inter,Arial,sans-serif;outline:none;background:#fff}
+.input:focus{border-color:#0a6b67;box-shadow:0 0 0 3px rgba(10,107,103,.15)}
+.submit{height:54px;border:0;border-radius:999px;background:linear-gradient(180deg,var(--gold1),var(--gold2));box-shadow:0 8px 0 var(--gold3),0 18px 28px rgba(0,0,0,.18);font:800 18px Inter,Arial,sans-serif;color:#222;cursor:pointer}
+.err{color:#b91c1c;font:600 13px Inter,Arial,sans-serif;display:none;text-align:center}
+.popup-mini{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.45);z-index:1000}
+.popup-mini.active{display:flex}
+.popup-mini .box{background:#fff;border-radius:16px;padding:18px 20px;min-width:260px;max-width:320px;text-align:center;box-shadow:0 18px 50px rgba(0,0,0,.2);font:700 16px Inter,Arial,sans-serif;color:#0a6b67}
+</style>
+</head>
+<body>
+  <header class="header container">
+    <img src="https://static.tildacdn.one/tild3466-3034-4931-b962-333737656236/logo.svg" alt="Safar Travel">
+  </header>
+
+  <section class="container">
+    <h1 class="title">Umra SuperMarketi</h1>
+    <p class="subtitle">o'zingiz tanlagan sanada va narxda amalga oshiring!</p>
+
+    <div class="media">
+      <img class="bg" src="https://static.tildacdn.one/tild3730-3638-4133-b833-663966326263/Kaba.webp" alt="Ka'ba">
+      <img class="people" src="https://static.tildacdn.one/tild3864-6131-4937-b433-333735626261/Group_9932.webp" alt="Hajga ketayotganlar">
+    </div>
+
+    <div class="panel">
+      <a class="btn" href="#joyband"><span class="icon"></span> JOY BAND QILISH</a>
+      <div class="helper">Joy band qilish tugmasi orqali ariza qoldiring va operatorlarimiz siz bilan bog'lanishadi!</div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div>“Safar Time Exclusive” MCHJ</div>
+      <div class="lic">№159243 litsenziya bilan xizmat ko‘rsatadi</div>
+      <div style="margin-top:14px;"><img src="https://static.tildacdn.one/tild3466-3034-4931-b962-333737656236/logo.svg" alt="Safar Travel" style="height:26px;opacity:.92"></div>
+    </div>
+  </footer>
+
+<div class="popup" id="popup">
+  <div class="popup-box">
+    <div class="close" id="closePopup">✕</div>
+    <h3 style="text-align:center;margin:0 0 8px;color:#0a6b67;font-weight:800">Ariza topshirish</h3>
+    <form id="umra-form" class="form" novalidate>
+      <label class="label" for="name">Ism</label>
+      <input id="name" class="input" required placeholder="Ismingiz">
+      <label class="label" for="phone">Telefon</label>
+      <input id="phone" class="input" required placeholder="+998 99 999 99 99">
+      <button class="submit" type="submit">Yuborish</button>
+      <p id="err" class="err">Telefon raqami to‘liq emas</p>
+      <p id="errName" class="err">Ismni to‘liq kiriting</p>
+    </form>
+  </div>
+</div>
+
+<div class="popup-mini" id="popupMini">
+  <div class="box">Ma’lumotlaringiz yuborildi</div>
+</div>
+
+<script>
+const trigger=document.querySelector('.btn[href="#joyband"]');
+const popup=document.getElementById('popup');
+const closeBtn=document.getElementById('closePopup');
+trigger.addEventListener('click',e=>{e.preventDefault();popup.classList.add('active')});
+closeBtn.addEventListener('click',()=>popup.classList.remove('active'));
+popup.addEventListener('click',e=>{if(e.target===popup)popup.classList.remove('active')});
+
+const nameEl=document.getElementById('name');
+nameEl.addEventListener('input',e=>{const v=e.target.value.normalize('NFC').replace(/[^\p{L}\s]+/gu,'');if(v!==e.target.value)e.target.value=v});
+
+const phoneEl=document.getElementById('phone');
+const err=document.getElementById('err');
+const errName=document.getElementById('errName');
+const mini=document.getElementById('popupMini');
+const PREFIX='+998 ';
+function onlyDigits(s){return s.replace(/\D/g,'')}
+function formatUz(d){let r='';const m=[2,3,2,2];let i=0,idx=0;while(i<m.length&&idx<d.length){const part=d.slice(idx,idx+m[i]);r+=part;if(part.length===m[i]&&i<m.length-1)r+=' ';idx+=part.length;i++}return r}
+function ensurePrefix(){if(!phoneEl.value.startsWith(PREFIX))phoneEl.value=PREFIX}
+function setCaretEnd(){requestAnimationFrame(()=>phoneEl.setSelectionRange(phoneEl.value.length,phoneEl.value.length))}
+ensurePrefix();
+phoneEl.addEventListener('focus',()=>{ensurePrefix();setCaretEnd()});
+phoneEl.addEventListener('click',()=>{if(phoneEl.selectionStart<PREFIX.length)setCaretEnd()});
+phoneEl.addEventListener('keydown',e=>{if(phoneEl.selectionStart<=PREFIX.length&&(e.key==='Backspace'||e.key==='Delete'))e.preventDefault()});
+phoneEl.addEventListener('input',()=>{ensurePrefix();const d=onlyDigits(phoneEl.value.slice(PREFIX.length)).slice(0,9);phoneEl.value=PREFIX+formatUz(d)});
+
+document.getElementById('umra-form').addEventListener('submit',e=>{
+  let ok=true;
+  const nameTrim=nameEl.value.trim();
+  if(!nameTrim||!/^\p{L}[\p{L}\s]+$/u.test(nameTrim)){ok=false;errName.style.display='block';nameEl.focus()}
+  else{errName.style.display='none'}
+  const d=onlyDigits(phoneEl.value.slice(PREFIX.length));
+  if(d.length!==9){ok=false;err.style.display='block';if(document.activeElement!==nameEl){phoneEl.focus();setCaretEnd()}}
+  else{err.style.display='none'}
+  if(!ok){e.preventDefault();return}
+  e.preventDefault();
+  popup.classList.remove('active');
+  mini.classList.add('active');
+  setTimeout(()=>{window.location.href='https://nocodestudy.uz';},1100);
+});
+</script>
+</body>
+</html>
