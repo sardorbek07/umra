@@ -83,19 +83,22 @@ function resetAmoForm(){
   const cont=document.getElementById(CONT_ID);
   if(cont) cont.innerHTML='';
   document.querySelectorAll('#amoforms_script_'+FORM_ID+', script[src*="forms.amocrm.ru/forms/assets/js/amoforms.js"]').forEach(s=>s.remove());
-  delete window.amo_forms_params;
-  delete window.amo_forms_load;
-  delete window.amo_forms_loaded;
-  delete window['amo_forms_params'];
-  delete window['amo_forms_load'];
-  delete window['amo_forms_loaded'];
+  try{delete window.amo_forms_params}catch(e){window.amo_forms_params=undefined}
+  try{delete window.amo_forms_load}catch(e){window.amo_forms_load=undefined}
+  try{delete window.amo_forms_loaded}catch(e){window.amo_forms_loaded=undefined}
+}
+
+function bootstrapAmo(){
+  (function(w){
+    w.amo_forms_params=w.amo_forms_params||{setMeta:function(p){this.params=(this.params||[]).concat([p])}};
+    w.amo_forms_load=w.amo_forms_load||function(f){(w.amo_forms_load.f=(w.amo_forms_load.f||[])).push(f)};
+    w.amo_forms_loaded=w.amo_forms_loaded||function(f,k){(w.amo_forms_loaded.f=(w.amo_forms_loaded.f||[])).push([f,k])};
+    w.amo_forms_load({id:FORM_ID,hash:FORM_HASH,locale:'ru'});
+  })(window);
 }
 
 function loadAmoForm(){
-  const cont=document.getElementById(CONT_ID);
-  if(!cont) return;
-  window.amo_forms_params=[];
-  window.amo_forms_params.push({id:FORM_ID,hash:FORM_HASH,locale:'ru'});
+  bootstrapAmo();
   const s=document.createElement('script');
   s.id='amoforms_script_'+FORM_ID;
   s.async=true;
@@ -113,7 +116,6 @@ function openPopup(){
 trigger.addEventListener('click',e=>{e.preventDefault();openPopup()});
 closeBtn.addEventListener('click',()=>{popup.classList.remove('active');resetAmoForm()});
 popup.addEventListener('click',e=>{if(e.target===popup){popup.classList.remove('active');resetAmoForm()}});
-
 window.addEventListener('pageshow',()=>{const cont=document.getElementById(CONT_ID);if(cont&&cont.querySelector('iframe')){resetAmoForm()}});
 </script>
 </body>
