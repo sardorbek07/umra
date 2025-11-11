@@ -5,81 +5,72 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Umra SuperMarketi — Safar Travel</title>
 <style>
-:root{--brand:#0a6b67;--text:#0b0f10;--gold1:#ffde66;--gold2:#f3c02b;--gold3:#b68712}
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;color:var(--text);background:#f3f5f3}
-.container{max-width:720px;margin:0 auto;padding:0 18px}
-.header{padding:18px 0;display:flex;justify-content:center}
-.header img{height:34px}
-.title{font-size:clamp(36px,6vw,56px);line-height:1.05;text-align:center;color:#0e5853;font-weight:800;margin:6px 0 8px}
-.subtitle{font-size:clamp(18px,2.4vw,24px);line-height:1.35;text-align:center;color:#0a6b67;font-weight:700;margin:0 0 20px}
-.media{position:relative;border-radius:26px;overflow:visible;background:#fff;min-height:520px;padding-bottom:120px}
-.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center bottom;filter:saturate(1.05);z-index:0}
-.people{position:absolute;right:0;left:0;bottom:-60px;width:75%;max-width:480px;margin:0 auto;z-index:1;display:block}
-.panel{position:relative;z-index:2;background:#fff;border-radius:26px;padding:26px 28px;box-shadow:0 20px 60px rgba(0,0,0,.12);border:1px solid rgba(0,0,0,.06);width:100%;margin:-80px auto 0;text-align:center}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 26px;border-radius:50px;background:linear-gradient(180deg,var(--gold1),var(--gold2));border:0;box-shadow:0 8px 0 var(--gold3),0 18px 28px rgba(0,0,0,.18);font-weight:800;font-size:22px;letter-spacing:.2px;color:#222;text-decoration:none}
-.btn:active{transform:translateY(2px);box-shadow:0 6px 0 var(--gold3),0 10px 20px rgba(0,0,0,.16)}
-.icon{width:26px;height:26px;background:#000;-webkit-mask:url('https://static.tildacdn.one/tild3864-6131-4937-b433-333735626261/Group_9932.webp') center/contain no-repeat;mask:url('https://static.tildacdn.one/tild3864-6131-4937-b433-333735626261/Group_9932.webp') center/contain no-repeat}
-.helper{font-size:15px;color:#2f3338;margin-top:14px}
-.footer{background:#2b2f33;color:#e9ecef;padding:26px 0 36px;margin-top:28px;text-align:center}
-.footer .lic{opacity:.92;margin-top:8px}
-@media(max-width:480px){
-  .media{min-height:420px;padding-bottom:150px}
-  .people{width:78%;bottom:-58px}
-  .panel{margin:-6px auto 0;padding:22px}
-  .btn{font-size:19px}
-}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f5f3}
+.container{max-width:720px;margin:0 auto;padding:0 18px;text-align:center}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 26px;border-radius:50px;background:linear-gradient(180deg,#ffde66,#f3c02b);border:0;box-shadow:0 8px 0 #b68712;font-weight:800;font-size:22px;color:#222;text-decoration:none}
+.btn:active{transform:translateY(2px);box-shadow:0 6px 0 #b68712}
 .popup{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:999}
 .popup.active{display:flex}
-.popup-box{background:#fff;border-radius:20px;padding:30px;max-width:420px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.2);position:relative}
+.popup-box{background:#fff;border-radius:20px;padding:30px;max-width:420px;width:90%;position:relative}
 .close{position:absolute;top:10px;right:16px;font-size:22px;cursor:pointer;color:#555}
-[id^="amoforms_container_"] iframe{width:100%!important}
+[id^="amoforms_container_"] iframe{width:100%!important;height:600px!important}
 </style>
 </head>
 <body>
-  <header class="header container">
-    <img src="logo (6).svg" alt="Safar Travel">
-  </header>
 
-  <section class="container">
-    <h1 class="title">Umra SuperMarketi</h1>
-    <p class="subtitle">o'zingiz tanlagan sanada va narxda amalga oshiring!</p>
+<div class="container">
+  <h1>Umra SuperMarketi</h1>
+  <p>O'zingiz tanlagan sanada va narxda amalga oshiring!</p>
+  <a class="btn" href="#joyband" id="openForm">JOY BAND QILISH</a>
+</div>
 
-    <div class="media">
-      <img class="bg" src="Kaba.webp" alt="Ka'ba" fetchpriority="high">
-      <img class="people" src="Group_9932.webp" alt="Haj safari" loading="lazy">
-    </div>
-
-    <div class="panel">
-      <a class="btn" href="#joyband"><span class="icon"></span> JOY BAND QILISH</a>
-      <div class="helper">Joy band qilish tugmasi orqali ariza qoldiring va operatorlarimiz siz bilan bog'lanishadi!</div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container">
-      <div>“Safar Time Exclusive” MCHJ</div>
-      <div class="lic">№159243 litsenziya bilan xizmat ko‘rsatadi</div>
-      <div style="margin-top:14px;"><img src="logo (6).svg" alt="Safar Travel" style="height:26px;opacity:.92"></div>
-    </div>
-  </footer>
-
-  <div class="popup" id="popup">
-    <div class="popup-box">
-      <div class="close" id="closePopup">✕</div>
-      <div id="amoforms_container_1628038"></div>
-
-      <script>!function(a,m,o,c,r,m){a[o+c]=a[o+c]||{setMeta:function(p){this.params=(this.params||[]).concat([p])}},a[o+r]=a[o+r]||function(f){a[o+r].f=(a[o+r].f||[]).concat([f])},a[o+r]({id:"1628038",hash:"19315bc6b2e3fdf42c8a6e83feaca6ab",locale:"ru"}),a[o+m]=a[o+m]||function(f,k){a[o+m].f=(a[o+m].f||[]).concat([[f,k]])}}(window,0,"amo_forms_","params","load","loaded");</script><script id="amoforms_script_1628038" async="async" charset="utf-8" src="https://forms.amocrm.ru/forms/assets/js/amoforms.js?1762856044"></script>
-    </div>
+<div class="popup" id="popup">
+  <div class="popup-box">
+    <div class="close" id="closePopup">✕</div>
+    <div id="amoforms_container_1628038"></div>
   </div>
+</div>
+
+<!-- AmoCRM form init sahifa yuklanganda (ko‘rinmas, ammo ishlaydi) -->
+<div id="amo_init" style="position:absolute;left:-9999px;top:-9999px;opacity:0;">
+  <script>
+  !function(a,m,o,c,r,m){a[o+c]=a[o+c]||{setMeta:function(p){this.params=(this.params||[]).concat([p])}},
+  a[o+r]=a[o+r]||function(f){a[o+r].f=(a[o+r].f||[]).concat([f])},
+  a[o+r]({id:"1628038",hash:"19315bc6b2e3fdf42c8a6e83feaca6ab",locale:"ru"}),
+  a[o+m]=a[o+m]||function(f,k){a[o+m].f=(a[o+m].f||[]).concat([[f,k]])}}(window,0,"amo_forms_","params","load","loaded");
+  </script>
+  <script id="amoforms_script_1628038" async charset="utf-8" src="https://forms.amocrm.ru/forms/assets/js/amoforms.js"></script>
+</div>
 
 <script>
-const trigger=document.querySelector('.btn[href="#joyband"]');
 const popup=document.getElementById('popup');
+const openBtn=document.getElementById('openForm');
 const closeBtn=document.getElementById('closePopup');
-trigger.addEventListener('click',e=>{e.preventDefault();popup.classList.add('active')});
-closeBtn.addEventListener('click',()=>popup.classList.remove('active'));
-popup.addEventListener('click',e=>{if(e.target===popup)popup.classList.remove('active')});
+const popupContainer=document.getElementById('amoforms_container_1628038');
+let moved=false;
+
+function moveIframe(){
+  if(moved) return true;
+  const iframe=document.querySelector('#amo_init iframe');
+  if(iframe){popupContainer.appendChild(iframe);moved=true;return true;}
+  return false;
+}
+function openPopup(){
+  popup.classList.add('active');
+  if(!moveIframe()){
+    let tries=0;
+    const timer=setInterval(()=>{
+      tries++;
+      if(moveIframe()||tries>8) clearInterval(timer);
+    },400);
+  }
+}
+function closePopup(){popup.classList.remove('active');}
+
+openBtn.addEventListener('click',e=>{e.preventDefault();openPopup()});
+closeBtn.addEventListener('click',closePopup);
+popup.addEventListener('click',e=>{if(e.target===popup)closePopup()});
 </script>
+
 </body>
 </html>
