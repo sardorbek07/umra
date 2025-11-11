@@ -29,22 +29,15 @@ body{margin:0;font-family:Arial,sans-serif;color:var(--text);background:#f3f5f3}
   .panel{margin:-6px auto 0;padding:22px}
   .btn{font-size:19px}
 }
-</style>
 
-<style>
+/* Popup */
 .popup{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:999}
 .popup.active{display:flex}
-.popup-box{background:#fff;border-radius:20px;padding:30px;max-width:400px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.2);position:relative}
+.popup-box{background:#fff;border-radius:20px;padding:30px;max-width:420px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.2);position:relative}
 .close{position:absolute;top:10px;right:16px;font-size:22px;cursor:pointer;color:#555}
-.form{display:grid;gap:14px;margin-top:8px}
-.label{font:600 14px/1.2 Arial,sans-serif;text-align:left}
-.input{width:100%;height:50px;border-radius:14px;border:1px solid #e5e7eb;padding:0 16px;font:600 16px Arial,sans-serif;outline:none;background:#fff}
-.input:focus{border-color:#0a6b67;box-shadow:0 0 0 3px rgba(10,107,103,.15)}
-.submit{height:54px;border:0;border-radius:999px;background:linear-gradient(180deg,var(--gold1),var(--gold2));box-shadow:0 8px 0 var(--gold3),0 18px 28px rgba(0,0,0,.18);font:800 18px Arial,sans-serif;color:#222;cursor:pointer}
-.err{color:#b91c1c;font:600 13px Arial,sans-serif;display:none;text-align:center}
-.popup-mini{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.45);z-index:1000}
-.popup-mini.active{display:flex}
-.popup-mini .box{background:#fff;border-radius:16px;padding:18px 20px;min-width:260px;max-width:320px;text-align:center;box-shadow:0 18px 50px rgba(0,0,0,.2);font:700 16px Arial,sans-serif;color:#0a6b67}
+
+/* amoCRM iframe to‘liq kenglikda ko‘rinsin */
+[id^="amoforms_container_"] iframe{width:100% !important;}
 </style>
 </head>
 <body>
@@ -75,73 +68,35 @@ body{margin:0;font-family:Arial,sans-serif;color:var(--text);background:#f3f5f3}
     </div>
   </footer>
 
-<div class="popup" id="popup">
-  <div class="popup-box">
-    <div class="close" id="closePopup">✕</div>
-    <h3 style="text-align:center;margin:0 0 8px;color:#0a6b67;font-weight:800">Ariza topshirish</h3>
-    <form id="umra-form" class="form" novalidate>
-      <label class="label" for="name">Ism</label>
-      <input id="name" class="input" required placeholder="Ismingiz" autocomplete="name">
-      <label class="label" for="phone">Telefon</label>
-      <input id="phone" class="input" required placeholder="+998 99 999 99 99" inputmode="tel" autocomplete="tel">
-      <button class="submit" type="submit">Yuborish</button>
-      <p id="err" class="err">Telefon raqami to‘liq emas</p>
-      <p id="errName" class="err">Ismni to‘liq kiriting</p>
-    </form>
-  </div>
-</div>
+  <!-- Popup -->
+  <div class="popup" id="popup">
+    <div class="popup-box">
+      <div class="close" id="closePopup">✕</div>
 
-<div class="popup-mini" id="popupMini">
-  <div class="box">Ma’lumotlaringiz yuborildi</div>
-</div>
+    
+      <div id="amoforms_container_1628038"></div>
+      <script>
+        !function(a,m,o,c,r,m2){a[o+c]=a[o+c]||{setMeta:function(p){this.params=(this.params||[]).concat([p])}},
+        a[o+r]=a[o+r]||function(f){a[o+r].f=(a[o+r].f||[]).concat([f])},
+        a[o+r]({id:"1628038",hash:"19315bc6b2e3fdf42c8a6e83feaca6ab",locale:"ru"}),
+        a[o+m2]=a[o+m2]||function(f,k){a[o+m2].f=(a[o+m2].f||[]).concat([[f,k]])}}
+        (window,0,"amo_forms_","params","load","loaded");
+      </script>
+      <script id="amoforms_script_1628038" async charset="utf-8" src="https://forms.amocrm.ru/forms/assets/js/amoforms.js?1762854926"></script>
+   
+
+    </div>
+  </div>
 
 <script>
-const trigger=document.querySelector('.btn[href="#joyband"]');
-const popup=document.getElementById('popup');
-const closeBtn=document.getElementById('closePopup');
-trigger.addEventListener('click',e=>{e.preventDefault();popup.classList.add('active')});
-closeBtn.addEventListener('click',()=>popup.classList.remove('active'));
-popup.addEventListener('click',e=>{if(e.target===popup)popup.classList.remove('active')});
+  // Popup boshqaruvi
+  const trigger=document.querySelector('.btn[href="#joyband"]');
+  const popup=document.getElementById('popup');
+  const closeBtn=document.getElementById('closePopup');
 
-const nameEl=document.getElementById('name');
-nameEl.addEventListener('input',e=>{const v=e.target.value.normalize('NFC').replace(/[^\p{L}\s]+/gu,'');if(v!==e.target.value)e.target.value=v});
-
-const phoneEl=document.getElementById('phone');
-const err=document.getElementById('err');
-const errName=document.getElementById('errName');
-const mini=document.getElementById('popupMini');
-const PREFIX='+998 ';
-function onlyDigits(s){return s.replace(/\D/g,'')}
-function formatUz(d){let r='';const m=[2,3,2,2];let i=0,idx=0;while(i<m.length&&idx<d.length){const part=d.slice(idx,idx+m[i]);r+=part;if(part.length===m[i]&&i<m.length-1)r+=' ';idx+=part.length;i++}return r}
-function ensurePrefix(){if(!phoneEl.value.startsWith(PREFIX))phoneEl.value=PREFIX}
-function setCaretEnd(){requestAnimationFrame(()=>phoneEl.setSelectionRange(phoneEl.value.length,phoneEl.value.length))}
-ensurePrefix();
-phoneEl.addEventListener('focus',()=>{ensurePrefix();setCaretEnd()});
-phoneEl.addEventListener('click',()=>{if(phoneEl.selectionStart<PREFIX.length)setCaretEnd()});
-phoneEl.addEventListener('keydown',e=>{if(phoneEl.selectionStart<=PREFIX.length&&(e.key==='Backspace'||e.key==='Delete'))e.preventDefault()});
-phoneEl.addEventListener('input',()=>{ensurePrefix();const d=onlyDigits(phoneEl.value.slice(PREFIX.length)).slice(0,9);phoneEl.value=PREFIX+formatUz(d)});
-
-const WEBHOOK='https://script.google.com/macros/s/AKfycbw9UdbGbnrRsW-pB4lZpzXLORAgjOp2WDaOLlI27H9h6RDiIZu74N6UmVyhzs8uMHfnKA/exec';
-
-document.getElementById('umra-form').addEventListener('submit',async e=>{
-  e.preventDefault();
-  let ok=true;
-  const nameTrim=nameEl.value.trim();
-  if(!nameTrim||!/^\p{L}[\p{L}\s]+$/u.test(nameTrim)){ok=false;errName.style.display='block';nameEl.focus()} else{errName.style.display='none'}
-  const d=onlyDigits(phoneEl.value.slice(PREFIX.length));
-  if(d.length!==9){ok=false;err.style.display='block';if(document.activeElement!==nameEl){phoneEl.focus();setCaretEnd()}} else{err.style.display='none'}
-  if(!ok)return;
-
-  try{
-    await fetch(WEBHOOK,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:nameTrim,phone:phoneEl.value,created:new Date().toISOString()})});
-  }catch(e){}
-
-  popup.classList.remove('active');
-  mini.classList.add('active');
-  setTimeout(()=>{mini.classList.remove('active');},1600);
-});
+  trigger.addEventListener('click',e=>{e.preventDefault();popup.classList.add('active')});
+  closeBtn.addEventListener('click',()=>popup.classList.remove('active'));
+  popup.addEventListener('click',e=>{if(e.target===popup)popup.classList.remove('active')});
 </script>
 </body>
 </html>
-
-
