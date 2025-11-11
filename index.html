@@ -34,10 +34,10 @@ body{margin:0;font-family:Arial,sans-serif;color:var(--text);background:#f3f5f3}
 <style>
 .popup{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:999}
 .popup.active{display:flex}
-.popup-box{background:#fff;border-radius:20px;padding:30px;max-width:400px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.2);position:relative}
+.popup-box{background:#fff;border-radius:20px;padding:24px 24px 20px;max-width:400px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.2);position:relative}
 .close{position:absolute;top:10px;right:16px;font-size:22px;cursor:pointer;color:#555}
-#amoforms_container_1628038 iframe{width:100%!important;height:600px!important}
-@media(max-width:480px){#amoforms_container_1628038 iframe{height:520px!important}}
+/* iframe o'z balandligiga qarab moslashadi */
+#amoforms_container_1628038 iframe{width:100%!important;display:block;border:0}
 </style>
 </head>
 <body>
@@ -75,6 +75,7 @@ body{margin:0;font-family:Arial,sans-serif;color:var(--text);background:#f3f5f3}
   </div>
 </div>
 
+<!-- Amo init: fon rejimda, lekin display:none emas -->
 <div id="amoforms_init_1628038" style="position:absolute;left:-99999px;top:-99999px;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden">
   <script>
   !function(a,m,o,c,r,m){a[o+c]=a[o+c]||{setMeta:function(p){this.params=(this.params||[]).concat([p])}},
