@@ -68,6 +68,8 @@ body{margin:0;font-family:Arial,sans-serif;color:var(--text);background:#f3f5f3}
     <div class="popup-box">
       <div class="close" id="closePopup">✕</div>
       <div id="amoforms_container_1628038"></div>
+
+      <script>!function(a,m,o,c,r,m){a[o+c]=a[o+c]||{setMeta:function(p){this.params=(this.params||[]).concat([p])}},a[o+r]=a[o+r]||function(f){a[o+r].f=(a[o+r].f||[]).concat([f])},a[o+r]({id:"1628038",hash:"19315bc6b2e3fdf42c8a6e83feaca6ab",locale:"ru"}),a[o+m]=a[o+m]||function(f,k){a[o+m].f=(a[o+m].f||[]).concat([[f,k]])}}(window,0,"amo_forms_","params","load","loaded");</script><script id="amoforms_script_1628038" async="async" charset="utf-8" src="https://forms.amocrm.ru/forms/assets/js/amoforms.js?1762856044"></script>
     </div>
   </div>
 
@@ -75,59 +77,9 @@ body{margin:0;font-family:Arial,sans-serif;color:var(--text);background:#f3f5f3}
 const trigger=document.querySelector('.btn[href="#joyband"]');
 const popup=document.getElementById('popup');
 const closeBtn=document.getElementById('closePopup');
-const CONT_ID='amoforms_container_1628038';
-const FORM_ID='1628038';
-const FORM_HASH='19315bc6b2e3fdf42c8a6e83feaca6ab';
-
-function clean(){
-  const c=document.getElementById(CONT_ID);
-  if(c) c.innerHTML='';
-  document.querySelectorAll('#amoforms_script_'+FORM_ID+',script[src*="forms.amocrm.ru/forms/assets/js/amoforms.js"]').forEach(x=>x.remove());
-  try{delete window.amo_forms_params}catch(e){window.amo_forms_params=undefined}
-  try{delete window.amo_forms_load}catch(e){window.amo_forms_load=undefined}
-  try{delete window.amo_forms_loaded}catch(e){window.amo_forms_loaded=undefined}
-}
-
-function bootstrap(){
-  (function(a,m,o,c,r){
-    a[o+c]=a[o+c]||{setMeta:function(p){this.params=(this.params||[]).concat([p])}};
-    a[o+r]=a[o+r]||function(f){a[o+r].f=(a[o+r].f||[]).concat([f])};
-    a[o+m]=a[o+m]||function(f,k){a[o+m].f=(a[o+m].f||[]).concat([[f,k]])};
-  })(window,0,"amo_forms_","params","load","loaded");
-  window.amo_forms_load({id:FORM_ID,hash:FORM_HASH,locale:"ru"});
-}
-
-function loadScript(){
-  const s=document.createElement('script');
-  s.id='amoforms_script_'+FORM_ID;
-  s.async=true;
-  s.charset='utf-8';
-  s.src='https://forms.amocrm.ru/forms/assets/js/amoforms.js?'+Date.now();
-  document.body.appendChild(s);
-}
-
-function ensure(attempt){
-  const c=document.getElementById(CONT_ID);
-  if(c&&c.querySelector('iframe')) return;
-  if(attempt>6) return;
-  clean();
-  bootstrap();
-  loadScript();
-  setTimeout(()=>ensure(attempt+1),attempt*400);
-}
-
-function openPopup(){
-  popup.classList.add('active');
-  clean();
-  bootstrap();
-  loadScript();
-  setTimeout(()=>ensure(1),400);
-}
-
-trigger.addEventListener('click',e=>{e.preventDefault();openPopup()});
-closeBtn.addEventListener('click',()=>{popup.classList.remove('active');clean()});
-popup.addEventListener('click',e=>{if(e.target===popup){popup.classList.remove('active');clean()}});
-window.addEventListener('pageshow',()=>{const c=document.getElementById(CONT_ID);if(c&&c.querySelector('iframe')){clean()}});
+trigger.addEventListener('click',e=>{e.preventDefault();popup.classList.add('active')});
+closeBtn.addEventListener('click',()=>popup.classList.remove('active'));
+popup.addEventListener('click',e=>{if(e.target===popup)popup.classList.remove('active')});
 </script>
 </body>
 </html>
