@@ -29,14 +29,10 @@ body{margin:0;font-family:Arial,sans-serif;color:var(--text);background:#f3f5f3}
   .panel{margin:-6px auto 0;padding:22px}
   .btn{font-size:19px}
 }
-
-/* Popup */
 .popup{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:999}
 .popup.active{display:flex}
 .popup-box{background:#fff;border-radius:20px;padding:30px;max-width:420px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.2);position:relative}
 .close{position:absolute;top:10px;right:16px;font-size:22px;cursor:pointer;color:#555}
-
-/* amoCRM iframe to‘liq kenglikda ko‘rinsin */
 [id^="amoforms_container_"] iframe{width:100% !important;}
 </style>
 </head>
@@ -68,35 +64,57 @@ body{margin:0;font-family:Arial,sans-serif;color:var(--text);background:#f3f5f3}
     </div>
   </footer>
 
-  <!-- Popup -->
   <div class="popup" id="popup">
     <div class="popup-box">
       <div class="close" id="closePopup">✕</div>
-
-    
       <div id="amoforms_container_1628038"></div>
-      <script>
-        !function(a,m,o,c,r,m2){a[o+c]=a[o+c]||{setMeta:function(p){this.params=(this.params||[]).concat([p])}},
-        a[o+r]=a[o+r]||function(f){a[o+r].f=(a[o+r].f||[]).concat([f])},
-        a[o+r]({id:"1628038",hash:"19315bc6b2e3fdf42c8a6e83feaca6ab",locale:"ru"}),
-        a[o+m2]=a[o+m2]||function(f,k){a[o+m2].f=(a[o+m2].f||[]).concat([[f,k]])}}
-        (window,0,"amo_forms_","params","load","loaded");
-      </script>
-      <script id="amoforms_script_1628038" async charset="utf-8" src="https://forms.amocrm.ru/forms/assets/js/amoforms.js?1762854926"></script>
-   
-
     </div>
   </div>
 
 <script>
-  // Popup boshqaruvi
-  const trigger=document.querySelector('.btn[href="#joyband"]');
-  const popup=document.getElementById('popup');
-  const closeBtn=document.getElementById('closePopup');
+const trigger=document.querySelector('.btn[href="#joyband"]');
+const popup=document.getElementById('popup');
+const closeBtn=document.getElementById('closePopup');
+const CONT_ID='amoforms_container_1628038';
+const FORM_ID='1628038';
+const FORM_HASH='19315bc6b2e3fdf42c8a6e83feaca6ab';
 
-  trigger.addEventListener('click',e=>{e.preventDefault();popup.classList.add('active')});
-  closeBtn.addEventListener('click',()=>popup.classList.remove('active'));
-  popup.addEventListener('click',e=>{if(e.target===popup)popup.classList.remove('active')});
+function resetAmoForm(){
+  const cont=document.getElementById(CONT_ID);
+  if(cont) cont.innerHTML='';
+  document.querySelectorAll('#amoforms_script_'+FORM_ID+', script[src*="forms.amocrm.ru/forms/assets/js/amoforms.js"]').forEach(s=>s.remove());
+  delete window.amo_forms_params;
+  delete window.amo_forms_load;
+  delete window.amo_forms_loaded;
+  delete window['amo_forms_params'];
+  delete window['amo_forms_load'];
+  delete window['amo_forms_loaded'];
+}
+
+function loadAmoForm(){
+  const cont=document.getElementById(CONT_ID);
+  if(!cont) return;
+  window.amo_forms_params=[];
+  window.amo_forms_params.push({id:FORM_ID,hash:FORM_HASH,locale:'ru'});
+  const s=document.createElement('script');
+  s.id='amoforms_script_'+FORM_ID;
+  s.async=true;
+  s.charset='utf-8';
+  s.src='https://forms.amocrm.ru/forms/assets/js/amoforms.js?'+Date.now();
+  document.body.appendChild(s);
+}
+
+function openPopup(){
+  popup.classList.add('active');
+  resetAmoForm();
+  loadAmoForm();
+}
+
+trigger.addEventListener('click',e=>{e.preventDefault();openPopup()});
+closeBtn.addEventListener('click',()=>{popup.classList.remove('active');resetAmoForm()});
+popup.addEventListener('click',e=>{if(e.target===popup){popup.classList.remove('active');resetAmoForm()}});
+
+window.addEventListener('pageshow',()=>{const cont=document.getElementById(CONT_ID);if(cont&&cont.querySelector('iframe')){resetAmoForm()}});
 </script>
 </body>
 </html>
